@@ -2,7 +2,10 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cloudinary = require("cloudinary").v2;
+const cors = require("cors");
 const app = express();
+
+app.use(cors());
 app.use(express.json()); // sans cette ligne req.body est undefined
 
 // connection à la BDD
