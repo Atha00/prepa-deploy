@@ -7,9 +7,9 @@ const isAuthenticated = async (req, res, next) => {
     if (!req.headers.authorization) {
       return res.status(401).json("Unauthorized");
     }
-    // console.log(req.headers.authorization); // Bearer MVS8cDI08kUKEclbXJ8BLsUt4a9vebeu
+    // console.log(req.headers.authorization);
     const token = req.headers.authorization.replace("Bearer ", ""); // pensez à l'espace derrière Bearer !
-    // console.log(token); // MVS8cDI08kUKEclbXJ8BLsUt4a9vebeu
+    // console.log(token);
     // maintenant qu'on a le token, on peut rechercher à quel utilisateur il appartient en BDD :
     const user = await User.findOne({ token: token });
     if (user === null) {
